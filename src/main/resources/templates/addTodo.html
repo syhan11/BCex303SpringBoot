@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        h2 {
+            font-family: arial, sans-serif;
+            text-align: center;
+            width: 100%;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .row {
+            padding: 10px;
+            width: 100%;
+            font-family: arial, sans-serif;
+            padding-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<h2>Add a Task</h2>
+<form action="#"
+      th:action="@{/process}"
+      th:object="${todo}"
+      method="post">
+    <div class="row">
+    Task Name:<input type="text" th:field="*{taskName}"/>
+              <span th:if="${#fields.hasErrors('taskName')}"
+                    th:errors="*{taskName}"></span> <br/>
+    </div>
+    <div class="row">
+    Due Date (mmddyy):<input text="text" th:field="*{dueDate}"/>
+                      <span th:if="${#fields.hasErrors('dueDate')}"
+                            th:errors="*{dueDate}"></span> <br/>
+    </div>
+    <div class="row">
+    Priority (1=low, 2=middle, 3=high):<input text="text" th:field="*{priority}"/>
+                                       <span th:if="${#fields.hasErrors('priority')}"
+                                             th:errors="*{priority}"></span>
+    </div>
+    <br/><br/>
+    <div class="row">
+    <input type="submit" value="Submit">
+    </div>
+
+</form>
+
+
+
+</body>
+</html>
