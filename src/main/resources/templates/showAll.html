@@ -3,13 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Show</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../static/style.css"></script>
+
+
 </head>
 <body>
 <h2>List of Things to Do</h2>
-<a href="/add">Add a Task</a><br/>
+<a href="/add" class="btn btn-default btn-sm">Add a Task
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
 <table>
     <tr>
-        <th></th>
+        <th>Task Name</th>
+        <th>Due Date</th>
+        <th>Priority</th>
+    </tr>
+    <tr th:each="item : ${todos}">
+        <td th:text="${item.taskName}"></td>
+        <td th:text="${item.dueDate}"></td>
+        <td th:text="${item.priority}"></td>
+        <td>
+            <a href="#@{/update/{id}(id=${item.id})}">Update</a>
+            <a href="#@{/detail/{id}(id=${item.id})}">Detail</a>
+            <a href="#@{/delete/{id}(id=${item.id})}">Delete</a>
+        </td>
     </tr>
 </table>
 
