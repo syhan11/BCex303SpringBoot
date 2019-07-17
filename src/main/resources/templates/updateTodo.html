@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+</head>
+
+<!-- For some strange unknown reason (to me), this "page of html" does not pick up css file
+  -- NOR link files.  SO... in order to make it "look" the same, style has been hardcoded!
+  -->
+<body>
+
+<h2 style="font-family: arial, sans-serif;
+           text-align: center;
+           width: 100%;
+           padding-left: 10px;">Update a Task</h2>
+
+<form action="#"
+      th:action="@{/process}"
+      th:object="${todo}"
+      method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="row"
+         style="padding: 10px;
+         width: 100%;
+         font-family: arial, sans-serif;
+         padding-left: 20px;">
+        Task Name:<input type="text" th:field="*{taskName}"/>
+        <span th:if="${#fields.hasErrors('taskName')}"
+              th:errors="*{taskName}"></span> <br/>
+    </div>
+    <div class="row"
+         style="padding: 10px;
+         width: 100%;
+         font-family: arial, sans-serif;
+         padding-left: 20px;">
+        Due Date(mmddyy): <input type="text" th:field="*{dueDate}"/>
+        <span th:if="${#fields.hasErrors('dueDate')}"
+              th:errors="*{dueDate}"></span><br/>
+    </div>
+    <div class="row"
+         style="padding: 10px;
+         width: 100%;
+         font-family: arial, sans-serif;
+         padding-left: 20px;">
+        Priority (1=low, 2=middle, 3=high):<input text="text" th:field="*{priority}"/>
+                                           <span th:if="${#fields.hasErrors('priority')}"
+                                            th:errors="*{priority}"></span>
+    </div>
+    <br/><br/>
+    <div class="row"
+         style="padding: 10px;
+         width: 100%;
+         font-family: arial, sans-serif;
+         padding-left: 20px;">
+        <input type="submit" value="Submit">
+    </div>
+
+</form>
+
+<!--<div th:replace="fragments :: header"></div>-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

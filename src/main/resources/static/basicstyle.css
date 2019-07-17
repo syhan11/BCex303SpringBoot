@@ -27,3 +27,12 @@ tr:nth-child(even) {
     font-family: arial, sans-serif;
     padding-left: 20px;
 }
+
+.footer-margin{
+    width:100%;
+    left: 0;
+    bottom: 0;
+    position:fixed;
+    text-align: center;
+}
+

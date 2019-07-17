@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments :: header_frag">
     <meta charset="UTF-8">
     <title>Show</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../static/style.css"></script>
-
-
 </head>
+
 <body>
 <h2>List of Things to Do</h2>
 <a href="/add" class="btn btn-default btn-sm">Add a Task
     <span class="glyphicon glyphicon-plus"></span>
 </a>
+
 <table>
     <tr>
         <th>Task Name</th>
@@ -28,14 +22,17 @@
         <td th:text="${item.dueDate}"></td>
         <td th:text="${item.priority}"></td>
         <td>
-            <a href="#@{/update/{id}(id=${item.id})}">Update</a>
-            <a href="#@{/detail/{id}(id=${item.id})}">Detail</a>
-            <a href="#@{/delete/{id}(id=${item.id})}">Delete</a>
+            <a th:href="@{/update/{id}(id=${item.id})}">
+                <span class="glyphicon glyphicon-edit"></span>Update</a>
+            <br/>
+            <a th:href="@{/delete/{id}(id=${item.id})}">
+                <span class="glyphicon glyphicon-trash"></span>Delete</a>
         </td>
     </tr>
 </table>
 
-
+<div th:replace="fragments :: script_frag"></div>
+<div th:replace="fragments :: footer_frag"></div>
 
 </body>
 </html>

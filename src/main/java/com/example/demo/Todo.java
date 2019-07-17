@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,10 +21,11 @@ public class Todo {
 
     @NotNull
     @Size(min=6, max=6)
-    private long dueDate;
+    private String dueDate;
 
     @NotNull
-    @Size(min=1, max=1)
+    @Min(1)
+    @Max(3)
     private int priority;
 
     public Todo() {
@@ -44,11 +47,11 @@ public class Todo {
         this.taskName = taskName;
     }
 
-    public long getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(long dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
